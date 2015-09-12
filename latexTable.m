@@ -4,7 +4,7 @@ function latex = latexTable(input)
 % command window for quick copy&paste and given back as a cell array.
 %
 % Author:   Eli Duenisch
-% Date:     July 26, 2014
+% Date:     September 12, 2015
 %
 % Input:
 % input    struct containing your data and optional fields (details described below)

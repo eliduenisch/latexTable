@@ -4,7 +4,7 @@ function latex = latexTable(input)
 % command window for quick copy&paste and given back as a cell array.
 %
 % Author:   Eli Duenisch
-% Date:     September 12, 2015
+% Date:     November 19, 2015
 %
 % Input:
 % input    struct containing your data and optional fields (details described below)
@@ -95,12 +95,12 @@ if ~isfield(input,'makeCompleteLatexDocument'),input.makeCompleteLatexDocument =
 % process table datatype
 if isa(input.data,'table')
   if(~isempty(input.data.Properties.RowNames))
-    input.tableColLabels = input.data.Properties.RowNames';
+    input.tableRowLabels = input.data.Properties.RowNames';
   end
   if(~isempty(input.data.Properties.VariableNames))
-    input.tableRowLabels = input.data.Properties.VariableNames';
+    input.tableColLabels = input.data.Properties.VariableNames';
   end
-    input.data = table2array(input.data)';
+    input.data = table2array(input.data);
 end
 
 % get size of data

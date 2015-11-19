@@ -97,3 +97,31 @@ input.makeCompleteLatexDocument = 1;
 
 % Now call the function to generate LaTex code:
 latex = latexTable(input);
+
+
+%% Example 3: using string data that includes LaTex code in a MATLAB table
+
+% Please note: Make sure to enclose your LaTex code parts in $-environments!
+% e.g if you want to have a '\pm' for plotting a plus-minus symbol your code
+% should be '$\pm$'
+
+% Set up data and store it in a MATLAB table
+rowNames = {'row1'; 'row2'};
+var1={'5.4 $\pm$ .01'; '6.4 $\pm$ .01'};
+var2={'50.4 $\pm$ .02'; '60.4 $\pm$ .02'};
+T = table(var1, var2,  'RowNames', rowNames);
+
+% Now use this table as input in our input struct:
+input.data = T;
+
+% Switch to generate a complete LaTex document or just a table:
+input.makeCompleteLatexDocument = 1;
+
+% Switch transposing/pivoting your table if needed:
+input.transposeTable = 0;
+
+% Switch to generate a complete LaTex document or just a table:
+input.makeCompleteLatexDocument = 1;
+
+% Now call the function to generate LaTex code:
+latex = latexTable(input);

@@ -65,7 +65,7 @@ latex = latexTable(input);
 DateNumberThisVersion = datenum(version('-date'),'mmmm dd, yyyy');
 if DateNumberThisVersion < 735459 % MATLAB r2013b release day was datenumber 735459
     fprintf('\n\nCannot run example 2: This MATLAB version does not support datatype ''table''!\n');
-    break;
+    return;
 end
 
 fprintf('\n\nExample 2: using MATLAB table datatype as data input\n\n');

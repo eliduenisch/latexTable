@@ -183,7 +183,7 @@ if input.tableBorders
 else
     header = ['\begin{tabular}{',repmat(input.tableColumnAlignment,1,size(C,2)),'}'];
 end
-latex = {'\begin{table}[H!]';'\centering';header};
+latex = {'\begin{table}';'\centering';header};
 
 % generate table
 for i=1:size(C,1)

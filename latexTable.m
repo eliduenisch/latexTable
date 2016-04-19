@@ -3,9 +3,10 @@ function latex = latexTable(input)
 % input struct containing numeric values. The LaTeX code is printed in the
 % command window for quick copy&paste and given back as a cell array.
 %
-% Author:   Eli Duenisch
-% Date:     November 19, 2015
-% License:  This code is licensed using BSD 2 to maximise your freedom of using it :)
+% Author:       Eli Duenisch
+% Contributor:  Pascal E. Fortin
+% Date:         November 19, 2015
+% License:      This code is licensed using BSD 2 to maximise your freedom of using it :)
 % ----------------------------------------------------------------------------------
 %  Copyright (c) 2016, Eli Duenisch
 %  All rights reserved.
@@ -112,6 +113,8 @@ if ~isfield(input,'tableColumnAlignment'),input.tableColumnAlignment = 'c';end
 % Specify whether the table has borders:
 % 0 for no borders, 1 for borders
 if ~isfield(input,'tableBorders'),input.tableBorders = 1;end
+% Specify whether to use booktabs formating or regular table formating:
+if ~isfield(input,'booktabs'),input.booktabs = 0;else input.tableBorders = 0;end
 % Other optional fields:
 if ~isfield(input,'tableCaption'),input.tableCaption = 'MyTableCaption';end
 if ~isfield(input,'tableLabel'),input.tableLabel = 'MyTableLabel';end
@@ -177,7 +180,9 @@ if input.transposeTable
 end
 
 % make table header lines:
+
 hLine = '\hline';
+
 if input.tableBorders
     header = ['\begin{tabular}{|',repmat([input.tableColumnAlignment,'|'],1,size(C,2)),'}'];
 else
@@ -186,7 +191,14 @@ end
 latex = {'\begin{table}';'\centering';header};
 
 % generate table
+if input.booktabs
+    latex(end+1) = {'\toprule'};
+end    
+
 for i=1:size(C,1)
+    if i==2 && input.booktabs
+        latex(end+1) = {'\midrule'};
+    end
     if input.tableBorders
         latex(end+1) = {hLine};
     end
@@ -208,6 +220,11 @@ for i=1:size(C,1)
     end
     latex(end+1) = {[rowStr,' \\']};
 end
+
+if input.booktabs
+    latex(end+1) = {'\bottomrule'};
+end   
+
 
 % make table footer lines:
 footer = {'\end{tabular}';['\caption{',input.tableCaption,'}']; ...

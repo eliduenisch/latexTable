@@ -44,6 +44,13 @@ input.tableColumnAlignment = 'c';
 % Switch table borders on/off:
 input.tableBorders = 1;
 
+% Uses booktabs basic formating rules ('1' = using booktabs, '0' = not
+% using booktabs. Note that in order to compile the generated latex output, you have to use the booktabs package
+% within your latex document (include it using \usepackage{booktabs}). Also, using the booktabs option cancels the
+% borders options.
+input.booktabs = 1;
+
+
 % LaTex table caption:
 input.tableCaption = 'MyTableCaption';
 
@@ -58,6 +65,8 @@ latex = latexTable(input);
 
 
 %% Example 2: using a MATLAB table as data input
+% Clear the selected options from previous example
+clear all
 
 % Please note: since the table datatype was introduced in MATLAB version r2013b,
 % you cannot use this feature in older versions of MATLAB!
@@ -100,6 +109,8 @@ latex = latexTable(input);
 
 
 %% Example 3: using string data that includes LaTex code in a MATLAB table
+% Clear the selected options from previous example
+clear all
 
 % Please note: Make sure to enclose your LaTex code parts in $-environments!
 % e.g if you want to have a '\pm' for plotting a plus-minus symbol your code

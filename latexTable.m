@@ -5,8 +5,8 @@ function latex = latexTable(input)
 %
 % Author:       Eli Duenisch
 % Contributor:  Pascal E. Fortin
-% Date:         November 19, 2015
-% License:      This code is licensed using BSD 2 to maximise your freedom of using it :)
+% Date:         April 20, 2016
+% License:      This code is licensed using BSD 2 to maximize your freedom of using it :)
 % ----------------------------------------------------------------------------------
 %  Copyright (c) 2016, Eli Duenisch
 %  All rights reserved.

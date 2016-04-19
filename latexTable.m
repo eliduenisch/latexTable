@@ -3,9 +3,10 @@ function latex = latexTable(input)
 % input struct containing numeric values. The LaTeX code is printed in the
 % command window for quick copy&paste and given back as a cell array.
 %
-% Author:   Eli Duenisch
-% Date:     November 19, 2015
-% License:  This code is licensed using BSD 2 to maximise your freedom of using it :)
+% Author:       Eli Duenisch
+% Contributor:  Pascal E. Fortin
+% Date:         November 19, 2015
+% License:      This code is licensed using BSD 2 to maximise your freedom of using it :)
 % ----------------------------------------------------------------------------------
 %  Copyright (c) 2016, Eli Duenisch
 %  All rights reserved.

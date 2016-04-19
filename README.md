@@ -10,6 +10,7 @@ Optional features are:
 - setting the default symbol for NaN values
 - LaTeX column alignment
 - LaTeX table borders, caption, label
+- Use of the booktabs latex package
 - output a complete LaTeX document instead of a plain table
 
 

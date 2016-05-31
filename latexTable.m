@@ -106,7 +106,7 @@ if ~isfield(input,'dataFormatMode'),input.dataFormatMode = 'column';end
 % (4 digits floating point precision).
 if ~isfield(input,'dataFormat'),input.dataFormat = {'%.4f'};end
 % Define what should happen with NaN values in input.tableData:
-if ~isfield(input,'nanString'),input.dataNanString = '-';end
+if ~isfield(input,'dataNanString'),input.dataNanString = '-';end
 % Specify the alignment of the columns:
 % 'l' for left-justified, 'c' for centered, 'r' for right-justified
 if ~isfield(input,'tableColumnAlignment'),input.tableColumnAlignment = 'c';end

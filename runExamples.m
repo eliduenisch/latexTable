@@ -125,9 +125,6 @@ T = table(var1, var2,  'RowNames', rowNames);
 % Now use this table as input in our input struct:
 input.data = T;
 
-% Switch to generate a complete LaTex document or just a table:
-input.makeCompleteLatexDocument = 1;
-
 % Switch transposing/pivoting your table if needed:
 input.transposeTable = 0;
 

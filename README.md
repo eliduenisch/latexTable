@@ -5,16 +5,17 @@ This MATLAB function converts matrices, cells or tables from MATLAB to LaTeX tab
 - handles numeric and text/string data
 - easy including in your code for automation
 - easy saving as a LaTex document
+
 Optional features are:
-  - table positioning
-  - column/row labels
-  - column/row-wise formatting (like setting the number of digits etc.)
-  - pivoting the table (90 degree rotation making columns rows and vice versa)
-  - setting the default symbol for NaN values
-  - LaTeX column alignment
-  - LaTeX table borders, caption, label
-  - Use of the booktabs latex package
-  - output a complete LaTeX document instead of a plain table
+- table positioning
+- column/row labels
+- column/row-wise formatting (like setting the number of digits etc.)
+- pivoting the table (90 degree rotation making columns rows and vice versa)
+- setting the default symbol for NaN values
+- LaTeX column alignment
+- LaTeX table borders, caption, label
+- Use of the booktabs latex package
+- output a complete LaTeX document instead of a plain table
 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/12258734/13790805/724c99e0-eaea-11e5-8cb7-fc73122dd84d.png)

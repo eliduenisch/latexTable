@@ -52,6 +52,9 @@ function latex = latexTable(input)
 %
 % % Optional fields (if not set default values will be used):
 %
+% % Set the position of the table in the LaTex document using h, t, p, b, H or !
+% input.tablePositioning = 'h';
+%
 % % Set column labels (use empty string for no label):
 % input.tableColLabels = {'col1','col2','col3'};
 % % Set row labels (use empty string for no label):
@@ -83,6 +86,9 @@ function latex = latexTable(input)
 % % Switch table borders on/off:
 % input.tableBorders = 1;
 %
+% % Switch table booktabs on/off:
+% input.booktabs = 1;
+%
 % % LaTex table caption:
 % input.tableCaption = 'MyTableCaption';
 %
@@ -98,6 +104,12 @@ function latex = latexTable(input)
 %%%%%%%%%%%%%%%%%%%%%%%%%% Default settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % These settings are used if the corresponding optional inputs are not given.
 %
+% Placement of the table in LaTex document
+if isfield(input,'tablePlacement') && (length(input.tablePlacement)>0)
+    input.tablePlacement = ['[',input.tablePlacement,']'];
+else
+    input.tablePlacement = '';
+end
 % Pivoting of the input data swithced off per default:
 if ~isfield(input,'transposeTable'),input.transposeTable = 0;end
 % Default mode for applying input.tableDataFormat:
@@ -114,7 +126,13 @@ if ~isfield(input,'tableColumnAlignment'),input.tableColumnAlignment = 'c';end
 % 0 for no borders, 1 for borders
 if ~isfield(input,'tableBorders'),input.tableBorders = 1;end
 % Specify whether to use booktabs formating or regular table formating:
-if ~isfield(input,'booktabs'),input.booktabs = 0;else input.tableBorders = 0;end
+if ~isfield(input,'booktabs')
+    input.booktabs = 0;
+else
+    if input.booktabs
+        input.tableBorders = 0;
+    end
+end
 % Other optional fields:
 if ~isfield(input,'tableCaption'),input.tableCaption = 'MyTableCaption';end
 if ~isfield(input,'tableLabel'),input.tableLabel = 'MyTableLabel';end
@@ -180,15 +198,13 @@ if input.transposeTable
 end
 
 % make table header lines:
-
 hLine = '\hline';
-
 if input.tableBorders
-    header = ['\begin{tabular}{|',repmat([input.tableColumnAlignment,'|'],1,size(C,2)),'}'];
+    header = ['\begin{tabular}','{|',repmat([input.tableColumnAlignment,'|'],1,size(C,2)),'}'];
 else
-    header = ['\begin{tabular}{',repmat(input.tableColumnAlignment,1,size(C,2)),'}'];
+    header = ['\begin{tabular}','{',repmat(input.tableColumnAlignment,1,size(C,2)),'}'];
 end
-latex = {'\begin{table}';'\centering';header};
+latex = {['\begin{table}',input.tablePlacement];'\centering';header};
 
 % generate table
 if input.booktabs
@@ -226,20 +242,26 @@ if input.booktabs
 end   
 
 
-% make table footer lines:
-footer = {'\end{tabular}';['\caption{',input.tableCaption,'}']; ...
+% make footer lines for table:
+tableFooter = {'\end{tabular}';['\caption{',input.tableCaption,'}']; ...
     ['\label{table:',input.tableLabel,'}'];'\end{table}'};
 if input.tableBorders
-    latex = [latex;{hLine};footer];
+    latex = [latex;{hLine};tableFooter];
 else
-    latex = [latex;footer];
+    latex = [latex;tableFooter];
 end
 
 % add code if a complete latex document should be created:
 if input.makeCompleteLatexDocument
-    latexHeader = {'\documentclass[a4paper,10pt]{article}';'\begin{document}'};
+    % document header
+    latexHeader = {'\documentclass[a4paper,10pt]{article}'};
+    if input.booktabs
+        latexHeader(end+1) = {'\usepackage{booktabs}'};
+    end 
+    latexHeader(end+1) = {'\begin{document}'};
+    % document footer
     latexFooter = {'\end{document}'};
-    latex = [latexHeader;latex;latexFooter];
+    latex = [latexHeader';latex;latexFooter];
 end
 
 % print latex code to console:

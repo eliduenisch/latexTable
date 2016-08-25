@@ -3,7 +3,10 @@ This MATLAB function converts matrices, cells or tables from MATLAB to LaTeX tab
 - takes MATLAB matrices, cells or tables as input
 - gives code for a LaTeX table containing your data as output
 - handles numeric and text/string data
+- easy including in your code for automation
+- easy saving as a LaTex document
 Optional features are:
+- table positioning
 - column/row labels
 - column/row-wise formatting (like setting the number of digits etc.)
 - pivoting the table (90 degree rotation making columns rows and vice versa)

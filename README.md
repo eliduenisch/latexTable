@@ -4,7 +4,7 @@ This MATLAB function converts matrices, cells or tables from MATLAB to LaTeX tab
 - gives code for a LaTeX table containing your data as output
 - handles numeric and text/string data
 - easy including in your code for automation
-- easy saving as a LaTex document
+- easy direct saving as a LaTex document (see example 2 in runExamples.m)
 
 Optional features are:
 - table positioning

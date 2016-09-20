@@ -110,7 +110,7 @@ if isfield(input,'tablePlacement') && (length(input.tablePlacement)>0)
 else
     input.tablePlacement = '';
 end
-% Pivoting of the input data swithced off per default:
+% Pivoting of the input data switched off per default:
 if ~isfield(input,'transposeTable'),input.transposeTable = 0;end
 % Default mode for applying input.tableDataFormat:
 if ~isfield(input,'dataFormatMode'),input.dataFormatMode = 'column';end
@@ -125,7 +125,7 @@ if ~isfield(input,'tableColumnAlignment'),input.tableColumnAlignment = 'c';end
 % Specify whether the table has borders:
 % 0 for no borders, 1 for borders
 if ~isfield(input,'tableBorders'),input.tableBorders = 1;end
-% Specify whether to use booktabs formating or regular table formating:
+% Specify whether to use booktabs formatting or regular table formatting:
 if ~isfield(input,'booktabs')
     input.booktabs = 0;
 else

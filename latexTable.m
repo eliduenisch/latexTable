@@ -64,7 +64,7 @@ function latex = latexTable(input)
 % input.transposeTable = 0;
 %
 % % Determine whether input.dataFormat is applied column or row based:
-% input.dataFormatMode = 'column'; % use 'column' or 'row'. if not set 'colum' is used
+% input.dataFormatMode = 'column'; % use 'column' or 'row'. if not set 'column' is used
 %
 % % Formatting-string to set the precision of the table values:
 % % For using different formats in different rows use a cell array like
